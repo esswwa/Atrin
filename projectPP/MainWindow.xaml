@@ -1,0 +1,13 @@
+﻿<Window x:Class="projectPP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projectPP"
+        mc:Ignorable="d"
+         Title="Atrin" MinHeight="1024"  MinWidth="1420" MaxHeight="1080" MaxWidth="1940" Icon="/Resources/logo1.png" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
+        <Frame Name="Frame1" 
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

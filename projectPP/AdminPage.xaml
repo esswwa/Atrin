@@ -1,0 +1,168 @@
+﻿<Page x:Class="projectPP.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:projectPP"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024"
+      d:DesignWidth="1420"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="MainPage">
+    <Border Background="White" 
+            BorderThickness="0.5"
+            CornerRadius="25">
+        <Grid Background="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240*"></ColumnDefinition>
+                <ColumnDefinition Width="445*"></ColumnDefinition>
+                <ColumnDefinition Width="366*"></ColumnDefinition>
+                <ColumnDefinition Width="366*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Resources/logo1.png"
+                   Margin="2"
+                   Style = "{StaticResource image1}"
+                   Grid.Row="0"
+                   MouseLeftButtonDown="AtrinClick"/>
+            <Grid Grid.Column="1">
+                <TextBox x:Name="Search"
+                             Grid.Row="0"
+                             MaxLength="22"
+                             materialDesign:HintAssist.Hint="Поиск"
+                             materialDesign:HintAssist.Background="White"
+                             materialDesign:HintAssist.FloatingScale="1"
+                             PreviewKeyDown="prviewKeyDown"
+                             materialDesign:HintAssist.FontFamily="Cambria"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                             BorderBrush="#6b7aff"                              
+                             Margin="0 15 0 15"
+                             Foreground="#6b7aff" 
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                             FontSize="18" 
+                             VerticalAlignment="Center"/>
+                <Image Source="/Resources/loupa.png"
+                       MouseLeftButtonDown="SearchClick" 
+                       HorizontalAlignment="Right"
+                       MaxHeight="35" 
+                       Margin="15, 5"/>
+            </Grid>
+            
+            <WrapPanel x:Name="Login" 
+                       Grid.Column="3" 
+                       MaxWidth="150"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" 
+                       MouseLeftButtonDown="LoginClick">
+                <Image Source="/Resources/profile.png" 
+                       Width="50"/>
+                <TextBlock x:Name="nameText"
+                           Text="Войти"
+                           VerticalAlignment="Center"
+                           Margin="10"  
+                           Style="{StaticResource UsuallyText1}"/>
+            </WrapPanel>
+
+
+            <ListView x:Name="objavleniyaListView"
+                      Background="White"
+                      Grid.Row="1" Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      BorderThickness="0" 
+                      MaxHeight="780"
+                      Margin="50, 50, 50, 0"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="True"
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4">
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Viewbox Margin="20"
+                                 MouseLeftButtonDown="elementClick" >
+                            <Border Background="White"
+                                    CornerRadius="15" 
+                                    BorderThickness="2"
+                                    BorderBrush="#6b7aff" 
+                                    Height="320" Width="280"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.3*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Border x:Name="borderListView" 
+                                            Grid.Row="0" 
+                                            CornerRadius="15, 15, 15, 15" 
+                                            Background="White" 
+                                            Margin="-2" 
+                                            BorderThickness="2"
+                                            BorderBrush="#6B7aff"/>
+                                    <Image Source="{Binding Photo}"
+                                           Stretch="Uniform"
+                                           Margin="0, 15, 0, 15">
+                                        <Image.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=borderListView}"/>
+                                        </Image.OpacityMask>
+                                    </Image>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.7*"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0"
+                                                   HorizontalAlignment="Left" 
+                                                   Margin="30, 15, 0, 0"
+                                                   TextWrapping="Wrap"
+                                                   Style="{StaticResource UsuallyText}"
+                                            Text="{Binding Name}"/>
+
+                                        <TextBlock Grid.Row="1" 
+                                                   HorizontalAlignment="Left" 
+                                                   Margin="30, 5, 0, 0" 
+                                                   TextAlignment="Center"
+                                                   Style="{StaticResource UsuallyText}"
+                                            Text="{Binding Price}"/>
+
+                                        <TextBlock Grid.Row="1" 
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="14"
+                                                   TextWrapping="Wrap" 
+                                                   Margin="30, 40, 0, 0" 
+                                                   TextAlignment="Left" 
+                                                   Style="{StaticResource LightText}" 
+                                                   Text="{Binding Country}"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Viewbox>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+            <Image Source="/Resources/leftButton.png" 
+                   Grid.Row="1"
+                   Grid.Column="1" 
+                   MaxHeight="60" 
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Stretch"
+                   MouseLeftButtonDown="leftClick" />
+        </Grid>
+
+    </Border>
+</Page>

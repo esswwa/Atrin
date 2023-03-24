@@ -1,0 +1,296 @@
+﻿<Page x:Class="projectPP.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:projectPP"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" 
+      d:DesignWidth="1420" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="MainPage">
+    <Border Background="White" 
+            BorderThickness="0.5" 
+            CornerRadius="25">
+        <Grid Background="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240*"></ColumnDefinition>
+                <ColumnDefinition Width="445*"></ColumnDefinition>
+                <ColumnDefinition Width="366*"></ColumnDefinition>
+                <ColumnDefinition Width="366*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Resources/logo1.png"
+                   Margin="2"
+                   Grid.Row="0"
+                   Style = "{StaticResource image1}"
+                   MouseLeftButtonDown="AtrinClick" />
+            <Grid Grid.Column="1">
+                <TextBox x:Name="Search"
+                             Grid.Row="0"
+                             MaxLength="22"
+                             materialDesign:HintAssist.Hint="Поиск"
+                             materialDesign:HintAssist.Background="White"
+                             materialDesign:HintAssist.FloatingScale="1"
+                             PreviewKeyDown="prviewKeyDown"
+                             materialDesign:HintAssist.FontFamily="Cambria"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                             BorderBrush="#6b7aff"                              
+                             Margin="0 15 0 15"
+                             Foreground="#6b7aff" 
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                             FontSize="18" 
+                             VerticalAlignment="Center"/>
+                <Image Source="/Resources/loupa.png"
+                       MouseLeftButtonDown="SearchClick"
+                       HorizontalAlignment="Right"
+                       MaxHeight="35"
+                       Margin="15, 5"/>
+            </Grid>
+
+            
+            
+            
+            <WrapPanel Visibility="Visible" 
+                       x:Name="UploadObya"
+                       Margin="50,0,0,0" 
+                       Grid.Column="2"  
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       MouseLeftButtonDown="uploadClick" >
+                <Image Source="/Resources/zagruzObjavlenie.png" Width="50"/>
+                <TextBlock Text="Разместить объявление"
+                           VerticalAlignment="Center" 
+                           Margin="5"  
+                           Style="{StaticResource UsuallyText1}"/>
+            </WrapPanel>
+            <WrapPanel x:Name="Login"  
+                       Margin="0,0,0,0"
+                       Grid.Column="3" 
+                       MaxWidth="400"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       MouseLeftButtonDown="LoginClick">
+                <Image Source="/Resources/profile.png" 
+                       Width="50"/>
+                <TextBlock x:Name="profileText" 
+                           Text="Войти"
+                           VerticalAlignment="Center"
+                           Margin="5" 
+                           Style="{StaticResource UsuallyText1}"/>
+            </WrapPanel>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0, 50">
+                <Border CornerRadius="15"
+                        MaxHeight="45" 
+                        BorderThickness="2" 
+                        BorderBrush="#6B7AFF" 
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Width="210">
+                    <StackPanel x:Name="Kategory"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal"
+                                MaxWidth="180"
+                                MouseLeftButtonDown="KategoryClick">
+                        <Image Source="/Resources/kategory.png"/>
+                        <TextBlock Text="Категории" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" 
+                                   Style="{StaticResource UsuallyText1}" />
+                    </StackPanel>
+                </Border>
+                <Border x:Name="KategoryK"
+                        Margin="10, 20"
+                        BorderThickness="2" 
+                        BorderBrush="#6B7AFF"
+                        Grid.Column="0" 
+                        Grid.Row="1"
+                        Visibility="Hidden">
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="5">
+                        <TextBlock x:Name="KategoryTransport" 
+                                   Text="Транспорт"
+                                   MaxHeight="30"
+                                   Foreground="#6b7aff" 
+                                   Margin="5" 
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center" 
+                                   Style="{StaticResource UsuallyText1}"
+                                   MouseLeftButtonDown="KategoryClick1"/>
+                        <Separator BorderThickness="4" 
+                                   BorderBrush="#6B7AFF"/>
+                        <TextBlock x:Name="KategoryElectronika" 
+                                   Foreground="#6b7aff"
+                                   MaxHeight="30" 
+                                   Text="Электроника" 
+                                   Margin="5" 
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center" 
+                                   Style="{StaticResource UsuallyText1}" 
+                                   MouseLeftButtonDown="KategoryClick1"/>
+                        <Separator BorderThickness="4" 
+                                   BorderBrush="#6B7AFF"/>
+                        <TextBlock x:Name="KategoryNedvizhimost"
+                                   Foreground="#6b7aff" 
+                                   MaxHeight="30"
+                                   Text="Недвижимость" 
+                                   Margin="5" 
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource UsuallyText1}" 
+                                   MouseLeftButtonDown="KategoryClick1"/>
+                        <Separator BorderThickness="4" 
+                                   BorderBrush="#6B7AFF"/>
+                        <TextBlock x:Name="KategoryLichnieVeshi"
+                                   Foreground="#6b7aff" 
+                                   MaxHeight="30" 
+                                   Text="Личные вещи"
+                                   Margin="5" 
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center" 
+                                   Style="{StaticResource UsuallyText1}"
+                                   MouseLeftButtonDown="KategoryClick1"/>
+                        <Separator BorderThickness="4"
+                                   BorderBrush="#6B7AFF"/>
+                        <TextBlock x:Name="KategoryUslugi"
+                                   Text="Услуги" 
+                                   Foreground="#6b7aff" 
+                                   MaxHeight="30"
+                                   Margin="5" 
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center" 
+                                   Style="{StaticResource UsuallyText1}"  
+                                   MouseLeftButtonDown="KategoryClick1"/>
+                    </StackPanel>
+                </Border>
+                
+            </StackPanel>
+            <Border Visibility="Hidden" 
+                    CornerRadius="15" 
+                    MaxHeight="45"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" 
+                    BorderThickness="2" 
+                    BorderBrush="#6B7AFF"
+                    Grid.Column="3" 
+                    Grid.Row="1"
+                    Width="210">
+                <StackPanel x:Name="price"
+                            Orientation="Horizontal"
+                            MaxWidth="180"
+                            MouseLeftButtonDown="KategoryClick">
+                    <Image Source="/Resources/kategory.png"/>
+                    <TextBlock Text="По цене"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" 
+                               Style="{StaticResource UsuallyText}" />
+                </StackPanel>
+            </Border>
+            
+            <ListView x:Name="objavleniyaListView"
+                      Background="White"
+                      Grid.Row="1" Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      BorderThickness="0" 
+                      MaxHeight="780"
+                      Margin="50, 50, 50, 0"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="True"
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4">
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Viewbox Margin="20"
+                                 MouseLeftButtonDown="elementClick" >
+                            <Border Background="White"
+                                    CornerRadius="15" 
+                                    BorderThickness="2"
+                                    BorderBrush="#6b7aff" 
+                                    Height="320" Width="280"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.3*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Border x:Name="borderListView" 
+                                            Grid.Row="0" 
+                                            CornerRadius="15, 15, 15, 15" 
+                                            Background="White" 
+                                            Margin="-2" 
+                                            BorderThickness="2"
+                                            BorderBrush="#6B7aff"/>
+                                    <Image Source="{Binding Photo}"
+                                           Stretch="Uniform"
+                                           Margin="0, 15, 0, 15">
+                                        <Image.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=borderListView}"/>
+                                        </Image.OpacityMask>
+                                    </Image>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.7*"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0"
+                                                   HorizontalAlignment="Left" 
+                                                   Margin="30, 15, 0, 0"
+                                                   TextWrapping="Wrap"
+                                                   Style="{StaticResource UsuallyText}"
+                                            Text="{Binding Name}"/>
+
+                                        <TextBlock Grid.Row="1" 
+                                                   HorizontalAlignment="Left" 
+                                                   Margin="30, 5, 0, 0" 
+                                                   TextAlignment="Center"
+                                                   Style="{StaticResource UsuallyText}"
+                                                   Text="{Binding Price}"/>
+
+                                        <TextBlock Grid.Row="1" 
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="14"
+                                                   TextWrapping="Wrap" 
+                                                   Margin="30, 40, 0, 0" 
+                                                   TextAlignment="Left" 
+                                                   Style="{StaticResource LightText}" 
+                                                   Text="{Binding Country}"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Viewbox>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+            <Image x:Name="leftClick1"
+                   Source="/Resources/leftButton.png" 
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   MaxHeight="60"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Stretch"
+                   MouseLeftButtonDown="leftClick"
+                   Visibility="Hidden"/>
+        </Grid>
+
+    </Border>
+</Page>
